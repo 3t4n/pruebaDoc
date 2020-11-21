@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DocumentScanner,DocumentScannerOptions  } from '@ionic-native/document-scanner/ngx/';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
-
+  constructor(private documentScanner: DocumentScanner) {}
+  test(){
+    let opts: DocumentScannerOptions = {};
+this.documentScanner.scanDoc(opts)
+  .then((res: string) => console.log(res))
+  .catch((error: any) => console.error(error));
+  }
 }
